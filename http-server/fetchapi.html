@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function getData1(){
+            fetch("https://api.thecatapi.com/v1/images/search").then((response)=>{
+                response.json().then((finalData)=>{
+                    console.log(finalData)
+                })
+            })
+        }
+
+        async function getData2(){
+            const response= await fetch("https://api.thecatapi.com/v1/images/search")
+            const finalData= await response.json()
+            console.log(finalData)
+        }
+    </script>
+    <button onclick="getData1()">Get Data_1 (Promises)</button>
+    <button onclick="getData2()">Get Data_2 (Async Await)</button>
+</body>
+</html>
