@@ -1,9 +1,9 @@
 const express = require('express')
 const app = express()
 const bodyParser= require('body-parser')
-const port = process.env.PORT || 3000
+const port = 3000
 
-app.use(bodyParser.json())
+app.use(bodyParser.json())// requires dependency, need to install and maintain  'body-parser' alternative is app.use(express.json()) comes with express
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
