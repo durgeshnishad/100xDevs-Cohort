@@ -6,6 +6,7 @@
     <title>Calculator</title>
 </head>
 <script>
+    //Method 1: using Promises
     function calculateSum(){
         a=document.getElementById("firstNumber").value
         b=document.getElementById("secondNumber").value
@@ -21,6 +22,15 @@
                     })
             })
     }
+    //Method 2: using async await
+    /*async function calculateSum(){
+        a=document.getElementById("firstNumber").value
+        b=document.getElementById("secondNumber").value
+
+        const response= await("http://localhost:3000/getSum/?a="+ a +"&b=" +b)
+        const ans= await response.text()
+        document.getElementById("finalSum").innerHTML= ans
+    }*/
 </script>
 <body>
     <input id= "firstNumber" type="text" placeholder="Number 1"></input><br></br>
