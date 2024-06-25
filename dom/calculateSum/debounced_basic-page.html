@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<script>
+    let timeout
+    function debouncedCalculateSum(){
+        clearTimeout(timeout)
+        timeout=setTimeout(()=>{
+            calculateSum()
+        }, 1000)
+    }
+    
+    function calculateSum(){
+        a=document.getElementById("firstNumber").value
+        b=document.getElementById("secondNumber").value
+        fetch("http://localhost:3000/getSum/?a="+ a +"&b=" +b)
+            .then(function(response){
+                console.log(response)
+                response.text()
+                    .then(function(ans){
+                        document.getElementById('finalSum').innerHTML= ans
+                    })
+            })
+    }
+</script>
+    <body>
+        <input oninput="debouncedCalculateSum()" id= "firstNumber" type="text" placeholder="Number 1"></input><br></br>
+        <input oninput="debouncedCalculateSum()" id= "secondNumber" type="text" placeholder="Number 2"></input><br></br>
+        <div id="finalSum"></div>
+    </body>
+</html>
