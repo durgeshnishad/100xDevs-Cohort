@@ -9,9 +9,17 @@
     function calculateSum(){
         a=document.getElementById("firstNumber").value
         b=document.getElementById("secondNumber").value
-        const element= document.getElementById("finalSum")
-        console.log(element)
-        element.innerHTML=parseInt(a)+parseInt(b)
+        //const element= document.getElementById("finalSum")
+        //console.log(element)
+        //element.innerHTML=parseInt(a)+parseInt(b)
+        fetch("http://localhost:3000/getSum/?a="+ a +"&b=" +b)
+            .then(function(response){
+                console.log(response)
+                response.text()
+                    .then(function(ans){
+                        document.getElementById('finalSum').innerHTML= ans
+                    })
+            })
     }
 </script>
 <body>
