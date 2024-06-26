@@ -21,6 +21,7 @@ function calculateSum(req, res, next){
         res.status(400).send("Invalid Input")
     }
 }
+
 app.get("/getsum", calculateSum, (req, res)=>{
     res.send("Done!")
 })

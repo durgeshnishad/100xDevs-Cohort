@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Interest Calculator</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<script>
+    function calculateSI(){
+        const p= document.getElementById("Amount").value
+        const r= document.getElementById("Rate").value
+        const t= document.getElementById("Tenure").value
+        /*async function getSI(){
+            try{
+                const response= await axios.get("http://localhost:3000/SIcalculator/?p="+p+"&r="+r+"&t="+t)
+                response.data
+            }catch{
+                console.error('Error fetching or processing data:', error);
+            }
+        }*/
+        fetch("http://localhost:3000/SIcalculator/?p="+p+"&r="+r+"&t="+t)
+            .then(function(response){
+                console.log(response)
+                response.text()
+                    .then(function(ans){
+                        document.getElementById('finalAnswer').innerHTML= ans
+                    })
+            })
+    }
+</script>
+<body>
+    <input type= "text" id="Amount" placeholder="Enter Amount"></input><br></br>
+    <input type= "text" id="Rate" placeholder="Enter Rate"></input><br></br>
+    <input type= "text" id="Tenure" placeholder="Enter Tenure"></input><br></br>
+    <button onclick="calculateSI()">Calculate SI</button>
+    <div id="finalAnswer"></div>
+    
+</body>
+</html>
