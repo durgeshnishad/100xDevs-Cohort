@@ -27,7 +27,7 @@ app.get('/health-checkup', userMiddleware, kidneyMiddleware, (req, res)=>{
     })
 })
 
-app.get('/kideny-checkup', userMiddleware, kidneyMiddleware, (req, res)=>{
+app.get('/kidney-checkup', userMiddleware, kidneyMiddleware, (req, res)=>{
     res.json({
         msg: "ALL GOOD"
     })

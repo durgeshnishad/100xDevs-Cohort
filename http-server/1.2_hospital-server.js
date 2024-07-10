@@ -1,8 +1,8 @@
 const express= require('express')
 const app= express()
 const port= 3000
-//const bodyParser= require('body-parser')
 
+app.use(express.json())
 
 var users=[{
     name:"Patient1",
@@ -27,7 +27,7 @@ app.get('/', (req, res)=>{
     })
 })
 
-app.use(express.json())
+
 
 app.post('/', (req, res)=>{
     const isHealthy=req.body.isHealthy
